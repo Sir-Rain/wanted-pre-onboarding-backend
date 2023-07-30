@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,node,webstorm,dotenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,node,webstorm,dotenv
 
+### vscode ###
+.vscode
+
 ### dotenv ###
 .env
 
