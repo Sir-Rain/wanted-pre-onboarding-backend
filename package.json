@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Sir-Rain/wanted-pre-onboarding-backend/issues"
   },
-  "homepage": "https://github.com/Sir-Rain/wanted-pre-onboarding-backend#readme"
+  "homepage": "https://github.com/Sir-Rain/wanted-pre-onboarding-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
