@@ -1,5 +1,5 @@
 import express from 'express';
-import * as PostController from './article.js';
+import * as ArticleController from './article.js';
 
 export const router = express.Router();
 
@@ -8,5 +8,5 @@ router.get('/', (req, res) => {
 });
 
 // posts
-router.post('/post', PostController.create);
-router.get('/posts', PostController.getAll);
+router.get('/articles', ArticleController.getAll);
+router.post('/article', ArticleController.create);

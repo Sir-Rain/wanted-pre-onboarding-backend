@@ -8,23 +8,18 @@ export async function create(req, res) {
     content,
   });
 
-  await article.save();
+  const savedArticle = await article.save();
 
-  res.json({ message: 'OK' });
+  res.json({ message: 'Article Created', articleId: savedArticle.id });
 }
 
-export function getAll(req, res) {
+export async function getAll(req, res) {
   const pages = req.query.pages || 1;
 
-  const articles = [
-    {
-      title: 'hello',
-      content: 'world',
-    },
-  ];
+  const articles = await Article.findAll({ attributes: ['title', 'content'] });
 
-  res.stauts(200).json({
-    message: 'OK!',
+  res.status(200).json({
+    message: 'Success',
     articles,
   });
 }
