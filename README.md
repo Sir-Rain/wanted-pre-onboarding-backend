@@ -13,3 +13,151 @@
 ## 5. 구현 방법 및 이유에 대한 간략한 설명
 
 ## 6. API 명세(request/response 포함)
+### 1. 사용자
+#### 1) 회원가입
+
+**Request**
+<br>
+POST /auth/signup
+
+```text
+Request Body:
+  email: string
+  password: string
+```
+
+<br>
+
+**Response**
+<br>
+```
+StatusCode:
+- 성공 시: 201
+- 실패 시: 400, 409
+
+Response Body:
+  message: string
+  userId: number
+```
+
+<br>
+
+#### 2) 로그인
+**Request**
+<br>
+POST /auth/login
+
+```
+Request Body:
+  email: string
+  password: string
+```
+
+**Response**
+<br>
+
+```text
+StatusCode:
+- 성공 시: 200
+- 실패 시: 400, 401
+
+Response Body:
+  message: string
+```
+
+
+
+---
+### 2. 게시글
+
+#### 1) 새로운 게시글 생성
+**Request**
+<br>
+POST /post
+
+```text
+Request Body:
+  title: string
+  content: string
+```
+
+**Response**
+```text
+StatusCode:
+- 성공 시: 201
+- 실패 시: 400
+
+Response Body:
+  message: string
+  postId: number
+```
+
+#### 2) 게시글 목록 조회
+**Request**
+
+GET /posts?page={ number }
+
+**Response**
+```text
+StatusCode:
+- 성공 시: 200
+- 실패 시 : 400, 401
+
+Response Body:
+  message: string
+  count: number
+  posts: [
+    {
+      title: string,
+      content: string
+    } ... 
+  ]
+```
+
+#### 3) 특정 게시글 조회
+**Reqeust**
+
+GET /post/:id
+
+**Response**
+```text
+StatusCode:
+- 성공 시: 200,
+- 실패 시: 400, 404
+
+Response Body:
+  message: string
+  post:
+    title: string,
+    content: string
+```
+
+#### 4) 특정 게시글 수정
+**Request**
+
+PUT /post/:id
+
+**Response**
+```text
+StatusCode:
+- 성공 시: 200,
+- 실패 시: 400, 403, 404
+
+Response Body:
+  message: string
+```
+
+#### 5) 특정 게시글 삭제
+**Request**
+
+DELETE /post/:id
+
+**Response**
+```text
+StatusCode:
+- 성공 시: 200,
+- 실패 시: 400, 403, 404
+
+Response Body:
+ message: string
+```
