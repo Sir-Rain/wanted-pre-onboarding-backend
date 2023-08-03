@@ -7,6 +7,9 @@
 ### dotenv ###
 .env
 
+### config ###
+/config/default.json
+
 ### macOS ###
 # General
 .DS_Store
