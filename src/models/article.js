@@ -1,5 +1,5 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
-import { sequelize } from './db.js';
+import { sequelize } from './database.js';
 
 export default class Article extends Model {}
 Article.init(

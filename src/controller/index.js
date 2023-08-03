@@ -8,4 +8,5 @@ router.get('/', (req, res) => {
 });
 
 // posts
+router.post('/post', PostController.create);
 router.get('/posts', PostController.getAll);
