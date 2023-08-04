@@ -13,4 +13,5 @@ router.post('/article', ArticleController.create);
 router
   .route('/article/:id')
   .get(ArticleController.getArtlcie)
-  .put(ArticleController.updateArticle);
+  .put(ArticleController.updateArticle)
+  .delete(ArticleController.deleteArticle);

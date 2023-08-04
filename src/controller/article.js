@@ -58,3 +58,15 @@ export async function updateArticle(req, res) {
     article: updatedArticle,
   });
 }
+
+export async function deleteArticle(req, res) {
+  const id = req.params.id;
+
+  const result = await Article.destroy({ where: { id } });
+
+  console.log(result);
+
+  res.json({
+    message: 'Deleted',
+  });
+}
