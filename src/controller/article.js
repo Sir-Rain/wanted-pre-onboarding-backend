@@ -1,11 +1,16 @@
 import Article from '../models/article.js';
 
+import * as ArticleService from '../service/article.js';
+
 export async function create(req, res) {
   const { title, content } = req.body;
+
+  const userId = 1;
 
   const article = new Article({
     title,
     content,
+    userId,
   });
 
   const savedArticle = await article.save();
@@ -14,16 +19,14 @@ export async function create(req, res) {
 }
 
 export async function getAll(req, res) {
-  const page = req.query.page || 1;
+  try {
+    const articles = await ArticleService.getAll(req.query);
 
-  const articles = await Article.findAll({
-    attributes: ['id', 'title', 'content'],
-  });
-
-  res.status(200).json({
-    message: 'Success',
-    articles,
-  });
+    res.status(200).json({
+      message: 'Success',
+      articles,
+    });
+  } catch (err) {}
 }
 
 export async function getArtlcie(req, res) {
