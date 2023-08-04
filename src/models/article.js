@@ -5,12 +5,18 @@ import User from './user.js';
 export default class Article extends Model {}
 Article.init(
   {
-    title: DataTypes.STRING,
-    content: DataTypes.STRING,
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,
-    modelName: 'Article',
+    modelName: 'article',
   },
 );
 
