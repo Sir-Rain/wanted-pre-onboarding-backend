@@ -14,12 +14,25 @@ export async function create(req, res) {
 }
 
 export async function getAll(req, res) {
-  const pages = req.query.pages || 1;
+  const page = req.query.page || 1;
 
-  const articles = await Article.findAll({ attributes: ['title', 'content'] });
+  const articles = await Article.findAll({
+    attributes: ['id', 'title', 'content'],
+  });
 
   res.status(200).json({
     message: 'Success',
     articles,
+  });
+}
+
+export async function getArtlcie(req, res) {
+  const id = req.params.id;
+
+  const article = await Article.findOne({ where: { id } });
+
+  res.json({
+    message: 'Success',
+    article,
   });
 }

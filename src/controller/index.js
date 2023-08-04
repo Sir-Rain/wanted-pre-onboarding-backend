@@ -10,3 +10,4 @@ router.get('/', (req, res) => {
 // posts
 router.get('/articles', ArticleController.getAll);
 router.post('/article', ArticleController.create);
+router.route('/article/:id').get(ArticleController.getArtlcie);
