@@ -1,5 +1,6 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 import { sequelize } from './database.js';
+import User from './user.js';
 
 export default class Article extends Model {}
 Article.init(
@@ -12,3 +13,5 @@ Article.init(
     modelName: 'Article',
   },
 );
+
+Article.belongsTo(User);
