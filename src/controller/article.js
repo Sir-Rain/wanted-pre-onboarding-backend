@@ -36,3 +36,25 @@ export async function getArtlcie(req, res) {
     article,
   });
 }
+
+export async function updateArticle(req, res) {
+  const id = req.params.id;
+
+  const article = await Article.findOne({ where: { id } });
+
+  const { title, content } = req.body;
+
+  if (title) {
+    article.title = title;
+  }
+  if (content) {
+    article.content = content;
+  }
+
+  const updatedArticle = await article.save();
+
+  res.json({
+    message: 'updated!',
+    article: updatedArticle,
+  });
+}
