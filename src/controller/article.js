@@ -30,9 +30,7 @@ export async function getAll(req, res) {
 }
 
 export async function getArtlcie(req, res) {
-  const id = req.params.id;
-
-  const article = await Article.findOne({ where: { id } });
+  const article = await ArticleService.getArticle(req.params);
 
   res.json({
     message: 'Success',

@@ -13,3 +13,11 @@ export async function findAll(offset, limit) {
     console.error(err);
   }
 }
+
+export async function findById(articleId) {
+  try {
+    const article = await Article.findByPk(articleId);
+
+    return article;
+  } catch (err) {}
+}
