@@ -11,6 +11,10 @@ const errorList = {
     code: 409,
     message: 'Already exists user',
   },
+  NotAuth: {
+    code: 401,
+    message: 'Not Authenticated',
+  },
 };
 
 export class AppError extends Error {

@@ -1,4 +1,3 @@
-import c from 'config';
 import * as AuthService from '../service/auth.js';
 
 export async function signup(req, res) {

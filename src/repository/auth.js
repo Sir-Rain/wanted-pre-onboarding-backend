@@ -30,3 +30,18 @@ export async function create(email, password) {
     throw err;
   }
 }
+
+export async function findById(userId) {
+  try {
+    const foundUser = await User.findByPk(userId, {
+      attributes: {
+        exclude: ['password'],
+      },
+    });
+
+    return foundUser;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
