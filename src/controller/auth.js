@@ -1,17 +1,19 @@
-import User from '../models/user.js';
+import * as AuthService from '../service/auth.js';
 
 export async function signup(req, res) {
-  const { email, password } = req.body;
+  try {
+    const savedUser = await AuthService.signup(req.body);
 
-  const user = new User({
-    email,
-    password,
-  });
+    res.status(201).json({
+      message: 'Success',
+      userId: savedUser.id,
+    });
+  } catch (err) {
+    const code = err.code || 500;
+    const message = err.message;
 
-  const savedUser = await user.save();
-
-  res.json({
-    message: 'Success',
-    userId: savedUser.id,
-  });
+    res.status(code).json({
+      message,
+    });
+  }
 }

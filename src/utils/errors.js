@@ -7,6 +7,10 @@ const errorList = {
     code: 404,
     message: 'Not Found',
   },
+  DuplicateUser: {
+    code: 409,
+    message: 'Already exists user',
+  },
 };
 
 export class AppError extends Error {
