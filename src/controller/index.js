@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
 
 // users
 router.post('/auth/signup', AuthController.signup);
+router.post('/auth/signin', AuthController.signin);
 
 // posts
 router.get('/articles', ArticleController.getAll);
