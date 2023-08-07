@@ -55,3 +55,19 @@ export async function updateArticle(userInput) {
     throw err;
   }
 }
+
+export async function deleteArticle(userInput) {
+  const articleId = userInput.id;
+
+  Validate.checkInputArticleId(articleId);
+
+  const article = await ArticleRepository.findById(articleId);
+
+  if (!article) {
+    throw new AppError('NotFound');
+  }
+
+  await article.destroy();
+
+  return articleId;
+}

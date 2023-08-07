@@ -66,13 +66,19 @@ export async function updateArticle(req, res) {
 }
 
 export async function deleteArticle(req, res) {
-  const id = req.params.id;
+  try {
+    const articleId = await ArticleService.deleteArticle(req.params);
 
-  const result = await Article.destroy({ where: { id } });
+    res.json({
+      message: 'Deleted',
+      articleId,
+    });
+  } catch (err) {
+    const code = err.code || 500;
+    const message = err.message;
 
-  console.log(result);
-
-  res.json({
-    message: 'Deleted',
-  });
+    res.status(code).json({
+      message: message,
+    });
+  }
 }

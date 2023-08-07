@@ -1,4 +1,4 @@
-import { AppError } from './errors';
+import { AppError } from './errors.js';
 
 export function checkInputArticleId(articleId) {
   if (!articleId) {
