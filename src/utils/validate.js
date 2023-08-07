@@ -1,15 +1,17 @@
+import { AppError } from './errors';
+
 export function checkInputArticleId(articleId) {
   if (!articleId) {
-    throw new Error('article id undefined');
+    throw new AppError('BadInput');
   }
 
   const toNumberArticleId = +articleId;
 
   if (isNaN(toNumberArticleId)) {
-    throw new Error('article id must be number type');
+    throw new AppError('BadInput');
   }
 
   if (toNumberArticleId < 1) {
-    throw new Error('article id must be over 0');
+    throw new AppError('BadInput');
   }
 }
