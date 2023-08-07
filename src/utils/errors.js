@@ -1,4 +1,8 @@
 const errorList = {
+  BadInput: {
+    code: 400,
+    message: 'Validate Error',
+  },
   NotFound: {
     code: 404,
     message: 'Not Found',

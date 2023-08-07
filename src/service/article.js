@@ -25,3 +25,33 @@ export async function getArticle(userInput) {
 
   return article;
 }
+
+export async function updateArticle(userInput) {
+  const articleId = userInput.id;
+
+  Validate.checkInputArticleId(articleId);
+
+  try {
+    const article = await ArticleRepository.findById(articleId);
+
+    if (!article) {
+      throw new AppError('NotFound');
+    }
+
+    const { title, content } = userInput;
+
+    if (title) {
+      article.title = title;
+    }
+    if (content) {
+      article.content = content;
+    }
+
+    const updatedArticle = await article.save();
+
+    return updatedArticle;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}

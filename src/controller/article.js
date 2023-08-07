@@ -48,25 +48,21 @@ export async function getArtlcie(req, res) {
 }
 
 export async function updateArticle(req, res) {
-  const id = req.params.id;
+  try {
+    const updatedArticle = await ArticleService.updateArticle(req.body);
 
-  const article = await Article.findOne({ where: { id } });
+    res.status(200).json({
+      message: 'updated!',
+      article: updatedArticle,
+    });
+  } catch (err) {
+    const code = err.code || 500;
+    const message = err.message;
 
-  const { title, content } = req.body;
-
-  if (title) {
-    article.title = title;
+    res.status(code).json({
+      message: message,
+    });
   }
-  if (content) {
-    article.content = content;
-  }
-
-  const updatedArticle = await article.save();
-
-  res.json({
-    message: 'updated!',
-    article: updatedArticle,
-  });
 }
 
 export async function deleteArticle(req, res) {
