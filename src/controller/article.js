@@ -30,12 +30,21 @@ export async function getAll(req, res) {
 }
 
 export async function getArtlcie(req, res) {
-  const article = await ArticleService.getArticle(req.params);
+  try {
+    const article = await ArticleService.getArticle(req.params);
 
-  res.json({
-    message: 'Success',
-    article,
-  });
+    res.status(200).json({
+      message: 'Success',
+      article,
+    });
+  } catch (err) {
+    const code = err.code || 500;
+    const message = err.message;
+
+    res.status(code).json({
+      message: message,
+    });
+  }
 }
 
 export async function updateArticle(req, res) {

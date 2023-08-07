@@ -1,5 +1,5 @@
-import e from 'express';
 import * as ArticleRepository from '../repository/article.js';
+import { AppError } from '../utils/errors.js';
 import * as Validate from '../utils/validate.js';
 
 export async function getAll(userInput) {
@@ -20,6 +20,7 @@ export async function getArticle(userInput) {
 
   if (!article) {
     // Not Found
+    throw new AppError('NotFound');
   }
 
   return article;
