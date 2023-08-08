@@ -61,12 +61,11 @@ export async function updateArticle(req) {
   try {
     const article = await ArticleRepository.findById(articleId);
 
-    const articlesUserId = article.userId;
-
     if (!article) {
       throw new AppError('NotFound');
     }
 
+    const articlesUserId = article.userId;
     if (userId !== articlesUserId) {
       throw new AppError('Forbidden');
     }
@@ -89,8 +88,10 @@ export async function updateArticle(req) {
   }
 }
 
-export async function deleteArticle(userInput) {
-  const articleId = userInput.id;
+export async function deleteArticle(req) {
+  const userId = req.userId;
+
+  const { id: articleId } = req.params;
 
   Validate.checkInputArticleId(articleId);
 
@@ -98,6 +99,11 @@ export async function deleteArticle(userInput) {
 
   if (!article) {
     throw new AppError('NotFound');
+  }
+
+  const articlesUserId = article.userId;
+  if (userId !== articlesUserId) {
+    throw new AppError('Forbidden');
   }
 
   await article.destroy();

@@ -57,7 +57,7 @@ export async function updateArticle(req, res) {
 
 export async function deleteArticle(req, res) {
   try {
-    const articleId = await ArticleService.deleteArticle(req.params);
+    const articleId = await ArticleService.deleteArticle(req);
 
     res.json({
       message: 'Deleted',
