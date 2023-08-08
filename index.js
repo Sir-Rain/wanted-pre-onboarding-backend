@@ -1,9 +1,12 @@
 import http from 'http';
+import { app } from './src/app.js';
 import config from 'config';
 
-import { app } from './src/app.js';
-
 import { sequelize } from './src/models/database.js';
+
+console.log(
+  'application running environment: ' + config.util.getEnv('NODE_ENV'),
+);
 
 const PORT = config.get('port') || 8080;
 

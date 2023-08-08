@@ -4,7 +4,8 @@
   "description": "wanted onboarding participate",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon node index.js"
+    "dev": "nodemon node index.js",
+    "start": "NODE_ENV=prod node ./index.js"
   },
   "type": "module",
   "repository": {

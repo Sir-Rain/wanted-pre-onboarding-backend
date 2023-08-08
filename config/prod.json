@@ -1,0 +1,11 @@
+{
+    "port": "",
+    "secretKey": "",
+    "database": {
+        "schema": "",
+        "host": "",
+        "port": "",
+        "username": "",
+        "password": ""
+    }
+}
