@@ -113,7 +113,7 @@ Response Body:
 #### 1) 새로운 게시글 생성
 **Request**
 <br>
-POST /post
+POST /article
 
 ```text
 Request Body:
@@ -135,7 +135,7 @@ Response Body:
 #### 2) 게시글 목록 조회
 **Request**
 
-GET /posts?page={ number }
+GET /articles?page={ number }
 
 **Response**
 ```text
@@ -157,7 +157,7 @@ Response Body:
 #### 3) 특정 게시글 조회
 **Reqeust**
 
-GET /post/:id
+GET /article/:id
 
 **Response**
 ```text
@@ -175,7 +175,7 @@ Response Body:
 #### 4) 특정 게시글 수정
 **Request**
 
-PUT /post/:id
+PUT /article/:id
 
 **Response**
 ```text
@@ -190,7 +190,7 @@ Response Body:
 #### 5) 특정 게시글 삭제
 **Request**
 
-DELETE /post/:id
+DELETE /article/:id
 
 **Response**
 ```text
