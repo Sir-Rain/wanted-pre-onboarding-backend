@@ -42,7 +42,7 @@ npm start
 - email: 유저 ID로 사용할 이메일
 - password: 로그인에 사용할 비밀번호
 
-2. Post 테이블
+2. Article 테이블
 - id: 테이블 기본키
 - title: 글 제목
 - content: 글 내용
