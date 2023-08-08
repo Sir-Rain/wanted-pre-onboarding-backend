@@ -37,6 +37,16 @@ npm start
   
 <img width="467" alt="image" src="https://github.com/Sir-Rain/wanted-pre-onboarding-backend/assets/103017201/6d6569a3-d376-4cfb-ad0c-e32de7eb04a7">
 
+1. User 테이블
+- id: 테이블 기본키
+- email: 유저 ID로 사용할 이메일
+- password: 로그인에 사용할 비밀번호
+
+2. Post 테이블
+- id: 테이블 기본키
+- title: 글 제목
+- content: 글 내용
+
 ## 4. 구현한 API의 동작을 촬영한 데모 영상 링크
 
 ## 5. 구현 방법 및 이유에 대한 간략한 설명
