@@ -1,21 +1,11 @@
-import Article from '../models/article.js';
-
 import * as ArticleService from '../service/article.js';
 
 export async function create(req, res) {
-  const { title, content } = req.body;
+  try {
+    const savedArticle = await ArticleService.create(req);
 
-  const userId = 1;
-
-  const article = new Article({
-    title,
-    content,
-    userId,
-  });
-
-  const savedArticle = await article.save();
-
-  res.json({ message: 'Article Created', articleId: savedArticle.id });
+    res.json({ message: 'Article Created', articleId: savedArticle.id });
+  } catch (err) {}
 }
 
 export async function getAll(req, res) {

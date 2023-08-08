@@ -2,6 +2,31 @@ import * as ArticleRepository from '../repository/article.js';
 import { AppError } from '../utils/errors.js';
 import * as Validate from '../utils/validate.js';
 
+export async function create(req) {
+  const userId = req.userId;
+
+  const { title, content } = req.body;
+
+  if (!title || !content) {
+    throw new AppError('BadInput');
+  }
+
+  const userInput = {
+    title,
+    content,
+    userId,
+  };
+
+  try {
+    const savedArticle = await ArticleRepository.save(userInput);
+
+    return savedArticle;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
 export async function getAll(userInput) {
   const LIMIT = 2;
 

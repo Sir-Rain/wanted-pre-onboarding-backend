@@ -7,8 +7,6 @@ import { AppError } from '../utils/errors.js';
 const SECERT_KEY = config.get('secretKey');
 
 export default async function checkAuth(req, res, next) {
-  console.log(req.headers);
-
   const { authorization } = req.headers;
 
   if (!authorization) {
