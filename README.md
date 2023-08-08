@@ -46,6 +46,7 @@ npm start
 - id: 테이블 기본키
 - title: 글 제목
 - content: 글 내용
+- userId: 글을 작성한 User의 pk
 
 ## 4. 구현한 API의 동작을 촬영한 데모 영상 링크
 
