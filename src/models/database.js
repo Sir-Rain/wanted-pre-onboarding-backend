@@ -14,4 +14,4 @@ export const sequelize = new Sequelize({
   dialect: 'mysql',
 });
 
-sequelize.sync();
+// sequelize.sync();
