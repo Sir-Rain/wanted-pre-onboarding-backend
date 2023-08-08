@@ -39,7 +39,7 @@ export async function getArtlcie(req, res) {
 
 export async function updateArticle(req, res) {
   try {
-    const updatedArticle = await ArticleService.updateArticle(req.body);
+    const updatedArticle = await ArticleService.updateArticle(req);
 
     res.status(200).json({
       message: 'updated!',

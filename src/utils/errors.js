@@ -15,6 +15,10 @@ const errorList = {
     code: 401,
     message: 'Not Authenticated',
   },
+  Forbidden: {
+    code: 403,
+    message: 'Not Authorizaion',
+  },
 };
 
 export class AppError extends Error {

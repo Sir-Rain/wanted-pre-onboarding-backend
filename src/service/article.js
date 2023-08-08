@@ -51,19 +51,27 @@ export async function getArticle(userInput) {
   return article;
 }
 
-export async function updateArticle(userInput) {
-  const articleId = userInput.id;
+export async function updateArticle(req) {
+  const userId = req.userId;
+
+  const { id: articleId } = req.params;
 
   Validate.checkInputArticleId(articleId);
 
   try {
     const article = await ArticleRepository.findById(articleId);
 
+    const articlesUserId = article.userId;
+
     if (!article) {
       throw new AppError('NotFound');
     }
 
-    const { title, content } = userInput;
+    if (userId !== articlesUserId) {
+      throw new AppError('Forbidden');
+    }
+
+    const { title, content } = req.body;
 
     if (title) {
       article.title = title;
