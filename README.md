@@ -3,6 +3,35 @@
 ## 1. 지원자 이름: 김경우
 
 ## 2. 애플리케이션의 실행 방법 (엔드포인트 호출 방법 포함)
+1. 이 리포지토리를 클론 받습니다.
+```bash
+git clone https://github.com/Sir-Rain/wanted-pre-onboarding-backend.git
+```
+
+2. 서버 실행에 필요한 패키지를 설치합니다.
+```bash
+npm i
+```
+
+3. 서버 실행에 필요한 정보를 config/prod.json에 작성합니다.
+```json
+{
+    "port": "", // API 서버 실행 포트
+    "secretKey": "", // JWT TOKEN 사용에 필요한 비밀키
+    "database": {
+        "schema": "", // 사용 할 DB 스키마
+        "host": "", // MYSQL 서버 호스트명
+        "port": "", // MYSQL 서버 포트
+        "username": "", // 사용 할 MYSQL 서버 유저명
+        "password": "" // 사용 할 MYSQL 서버 유저 비밀번호 
+    }
+}
+```
+
+4. 서버를 실행합니다.
+```bash
+npm start
+```
 
 ## 3. 데이터베이스 테이블 구조
   
