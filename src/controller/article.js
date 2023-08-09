@@ -1,6 +1,6 @@
 import * as ArticleService from '../service/article.js';
 
-export async function create(req, res) {
+export async function create(req, res, next) {
   try {
     const savedArticle = await ArticleService.create(req);
 
@@ -10,7 +10,7 @@ export async function create(req, res) {
   }
 }
 
-export async function getAll(req, res) {
+export async function getAll(req, res, next) {
   try {
     const articles = await ArticleService.getAll(req.query);
 
@@ -23,7 +23,7 @@ export async function getAll(req, res) {
   }
 }
 
-export async function getArtlcie(req, res) {
+export async function getArtlcie(req, res, next) {
   try {
     const article = await ArticleService.getArticle(req.params);
 
@@ -36,7 +36,7 @@ export async function getArtlcie(req, res) {
   }
 }
 
-export async function updateArticle(req, res) {
+export async function updateArticle(req, res, next) {
   try {
     const updatedArticle = await ArticleService.updateArticle(req);
 
@@ -49,7 +49,7 @@ export async function updateArticle(req, res) {
   }
 }
 
-export async function deleteArticle(req, res) {
+export async function deleteArticle(req, res, next) {
   try {
     const articleId = await ArticleService.deleteArticle(req);
 
