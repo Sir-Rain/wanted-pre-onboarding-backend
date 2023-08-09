@@ -72,6 +72,10 @@ export async function updateArticle(req) {
 
     const { title, content } = req.body;
 
+    if (!title && !content) {
+      throw new AppError('BadInput');
+    }
+
     if (title) {
       article.title = title;
     }

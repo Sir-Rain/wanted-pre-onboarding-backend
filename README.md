@@ -63,6 +63,30 @@ curl -XPOST "http://localhost:8080/article" \
 -d "title=글 제목&content=글 내용"
 ```
 
+#### 게시글 목록 조회
+```bash
+curl -XGET "http://localhost:8080/articles" 
+```
+
+#### 특정 게시글 조회
+```bash
+curl -XGET "http://localhost:8080/article/1"
+```
+
+#### 특정 게시글 수정
+```bash
+curl -XPUT "http://localhost:8080/article/1" \
+-H "Cotent-Type: application/json" \
+-H "Authorization: Bearer 로그인 시 발급 받은 토큰" \
+-d "title=테스트타이틀&content=테스트내용"
+```
+
+#### 특정 게시글 삭제
+```bash
+curl -XDELETE "http://localhost:8080/article/1" \
+-H "Authorization: Bearer 로그인 시 발급 받은 토큰"
+```
+
 ## 3. 데이터베이스 테이블 구조
   
 <img width="467" alt="image" src="https://github.com/Sir-Rain/wanted-pre-onboarding-backend/assets/103017201/6d6569a3-d376-4cfb-ad0c-e32de7eb04a7">
