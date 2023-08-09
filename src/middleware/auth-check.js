@@ -9,17 +9,17 @@ const SECERT_KEY = config.get('secretKey');
 export default async function checkAuth(req, res, next) {
   const { authorization } = req.headers;
 
-  if (!authorization) {
-    throw new AppError('NotAuth');
-  }
-
-  const [, token] = authorization.split('Bearer ');
-
-  if (!token) {
-    throw new AppError('NotAuth');
-  }
-
   try {
+    if (!authorization) {
+      throw new AppError('NotAuth');
+    }
+
+    const [, token] = authorization.split('Bearer ');
+
+    if (!token) {
+      throw new AppError('NotAuth');
+    }
+
     const payload = await jwt.verify(token, SECERT_KEY);
 
     const { id, email } = payload;
@@ -39,5 +39,6 @@ export default async function checkAuth(req, res, next) {
   } catch (err) {
     console.error(err);
     next(err);
+    return;
   }
 }
