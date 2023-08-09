@@ -1,6 +1,6 @@
 import * as AuthService from '../service/auth.js';
 
-export async function signup(req, res) {
+export async function signup(req, res, next) {
   try {
     const savedUser = await AuthService.signup(req.body);
 
@@ -9,16 +9,11 @@ export async function signup(req, res) {
       userId: savedUser.id,
     });
   } catch (err) {
-    const code = err.code || 500;
-    const message = err.message;
-
-    res.status(code).json({
-      message,
-    });
+    next(err);
   }
 }
 
-export async function signin(req, res) {
+export async function signin(req, res, next) {
   try {
     const token = await AuthService.signin(req.body);
 
@@ -28,9 +23,6 @@ export async function signin(req, res) {
       token: token,
     });
   } catch (err) {
-    const code = err.code || 500;
-    const message = err.message;
-
-    res.status(code).json({ message });
+    next(err);
   }
 }

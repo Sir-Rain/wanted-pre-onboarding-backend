@@ -5,7 +5,9 @@ export async function create(req, res) {
     const savedArticle = await ArticleService.create(req);
 
     res.json({ message: 'Article Created', articleId: savedArticle.id });
-  } catch (err) {}
+  } catch (err) {
+    next(err);
+  }
 }
 
 export async function getAll(req, res) {
@@ -16,7 +18,9 @@ export async function getAll(req, res) {
       message: 'Success',
       articles,
     });
-  } catch (err) {}
+  } catch (err) {
+    next(err);
+  }
 }
 
 export async function getArtlcie(req, res) {
@@ -28,12 +32,7 @@ export async function getArtlcie(req, res) {
       article,
     });
   } catch (err) {
-    const code = err.code || 500;
-    const message = err.message;
-
-    res.status(code).json({
-      message: message,
-    });
+    next(err);
   }
 }
 
@@ -46,12 +45,7 @@ export async function updateArticle(req, res) {
       article: updatedArticle,
     });
   } catch (err) {
-    const code = err.code || 500;
-    const message = err.message;
-
-    res.status(code).json({
-      message: message,
-    });
+    next(err);
   }
 }
 
@@ -64,11 +58,6 @@ export async function deleteArticle(req, res) {
       articleId,
     });
   } catch (err) {
-    const code = err.code || 500;
-    const message = err.message;
-
-    res.status(code).json({
-      message: message,
-    });
+    next(err);
   }
 }
