@@ -3,6 +3,9 @@
 ## 1. 지원자 이름: 김경우
 
 ## 2. 애플리케이션의 실행 방법 (엔드포인트 호출 방법 포함)
+
+### 2-1 API 서버 실행 방법
+
 1. 이 리포지토리를 클론 받습니다.
 ```bash
 git clone https://github.com/Sir-Rain/wanted-pre-onboarding-backend.git
@@ -28,9 +31,36 @@ npm i
 }
 ```
 
+
 4. 서버를 실행합니다.
 ```bash
 npm start
+```
+
+### 2-2 엔드 포인트 호출 방법
+
+터미널에서 curl 툴을 이용합니다.
+
+#### 회원가입
+```bash
+curl -XPOST "http://localhost:8080/auth/signup" \
+ -H "Cotent-Type: application/json" \
+ -d "email=test@test.test&password=testtest"
+```
+
+#### 로그인
+```bash
+curl -XPOST "http://localhost:8080/auth/signin" \
+ -H "Cotent-Type: application/json" \
+ -d "email=test@test.test&password=testtest"
+```
+
+#### 게시글 생성
+```bash
+curl -XPOST "http://localhost:8080/article" \
+-H "Cotent-Type: application/json" \
+-H "Authorization: Bearer 로그인 시 발급 받은 토큰 입력" \
+-d "title=글 제목&content=글 내용"
 ```
 
 ## 3. 데이터베이스 테이블 구조
