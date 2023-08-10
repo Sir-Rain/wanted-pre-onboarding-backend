@@ -105,6 +105,11 @@ curl -XDELETE "http://localhost:8080/article/1" \
 ## 4. 구현한 API의 동작을 촬영한 데모 영상 링크
 
 ## 5. 구현 방법 및 이유에 대한 간략한 설명
+config: dovenv와 고민하다 json형식이 더 깔끔하게 작성할 수 있을거 같아서 config 모듈 사용했습니다.
+
+데이터베이스: mysql 사용은 조건이어서 orm과 mysql2 모듈을 통한 sql 직접 사용과 고민하다 남은 구현 시간이 많지 않아 널리 알려진 orm sequalize를 사용 했습니다.
+
+사용자 가입/로그인: email 정규식 테스트, password 8글자 이상은 조건이 어렵지 않은 편이라 길이비교로 간단하게 처리했습니다.
 
 ## 6. API 명세(request/response 포함)
 ### 1. 사용자
