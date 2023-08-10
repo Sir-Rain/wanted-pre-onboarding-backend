@@ -5,6 +5,7 @@
 ## 2. 애플리케이션의 실행 방법 (엔드포인트 호출 방법 포함)
 
 ### 2-1 API 서버 실행 방법
+**node.js 실행 환경이 설치 되어 있어야합니다.**
 
 1. 이 리포지토리를 클론 받습니다.
 ```bash
@@ -13,6 +14,7 @@ git clone https://github.com/Sir-Rain/wanted-pre-onboarding-backend.git
 
 2. 서버 실행에 필요한 패키지를 설치합니다.
 ```bash
+cd wanted-pre-onboarding-backend
 npm i
 ```
 
@@ -159,10 +161,11 @@ Request Body:
 ```text
 StatusCode:
 - 성공 시: 200
-- 실패 시: 400, 401
+- 실패 시: 400
 
 Response Body:
   message: string
+  token: string
 ```
 
 
@@ -185,11 +188,11 @@ Request Body:
 ```text
 StatusCode:
 - 성공 시: 201
-- 실패 시: 400
+- 실패 시: 400, 401
 
 Response Body:
   message: string
-  postId: number
+  articleId: number
 ```
 
 #### 2) 게시글 목록 조회
@@ -201,7 +204,7 @@ GET /articles?page={ number }
 ```text
 StatusCode:
 - 성공 시: 200
-- 실패 시 : 400, 401
+- 실패 시 : 400
 
 Response Body:
   message: string
@@ -241,10 +244,18 @@ PUT /article/:id
 ```text
 StatusCode:
 - 성공 시: 200,
-- 실패 시: 400, 403, 404
+- 실패 시: 400, 401, 404
 
 Response Body:
   message: string
+  article: {
+    id: number,
+    title: string,
+    content: string
+    createdAt: string ( 0000-00-00T00:00:00.000Z format)
+    updatedAt: string ( 0000-00-00T00:00:00.000Z format)
+    userId: number
+  }
 ```
 
 #### 5) 특정 게시글 삭제
@@ -256,7 +267,7 @@ DELETE /article/:id
 ```text
 StatusCode:
 - 성공 시: 200,
-- 실패 시: 400, 403, 404
+- 실패 시: 401, 404
 
 Response Body:
  message: string
