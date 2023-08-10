@@ -103,6 +103,7 @@ curl -XDELETE "http://localhost:8080/article/1" \
 - userId: 글을 작성한 User의 pk
 
 ## 4. 구현한 API의 동작을 촬영한 데모 영상 링크
+https://drive.google.com/file/d/19-SL_auHJEy6PtQDfJHHCfcIRLFygp2B/view?usp=drive_link
 
 ## 5. 구현 방법 및 이유에 대한 간략한 설명
 config: dovenv와 고민하다 json형식이 더 깔끔하게 작성할 수 있을거 같아서 config 모듈 사용했습니다.
